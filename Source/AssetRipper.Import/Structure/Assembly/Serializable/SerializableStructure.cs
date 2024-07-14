@@ -129,14 +129,14 @@ namespace AssetRipper.Import.Structure.Assembly.Serializable
 			if (reader.Position != reader.Length)
 			{
 				LogMonoBehaviourMismatch(this, reader.Position, reader.Length);
-				return false;
+				return true;
 			}
 			return true;
 		}
 
 		private static void LogMonoBehaviourMismatch(SerializableStructure structure, int actual, int expected)
 		{
-			Logger.Error(LogCategory.Import, $"Unable to read MonoBehaviour Structure, because script {structure} layout mismatched binary content (read {actual} bytes, expected {expected} bytes).");
+			Logger.Warning(LogCategory.Import, $"Unable to read MonoBehaviour Structure, because script {structure} layout mismatched binary content (read {actual} bytes, expected {expected} bytes).");
 		}
 
 		private static void LogMonoBehaviorReadException(SerializableStructure structure, Exception ex)
