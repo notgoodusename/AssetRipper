@@ -56,7 +56,7 @@ internal static class OriginalPathHelper
 	/// <exception cref="Exception"></exception>
 	internal static void SetOriginalPaths(IAssetBundle bundle, BundledAssetsExportMode bundledAssetsExportMode)
 	{
-		string bundleName = bundle.GetAssetBundleName();
+		string bundleName = bundle.GetAssetBundleName().Replace(".bundle", "");
 		string bundleDirectory = bundleName + DirectorySeparator;
 		string directory = Path.Combine(AssetBundleFullPath, bundleName);
 		foreach (AccessPairBase<Utf8String, IAssetInfo> kvp in bundle.Container)
